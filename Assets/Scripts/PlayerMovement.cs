@@ -9,15 +9,17 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     [SerializeField] private float speed = 10f; 
     private Rigidbody2D rb;
     private Vector2 direction = new Vector2(1,0);
-    [SerializeField]private bool _isAirborne = false;
+    private BoxCollider2D coll;
     [SerializeField]private float jumpPower;
     private bool isJumping = false;
+    private SpriteRenderer sprite;
     
     private Animator anim;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -38,15 +40,16 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         direction.y = rb.velocity.y;
         rb.velocity = direction;
         
+        
     }
 
     public void Jump()
     {
-        if ((Input.GetKey("w") || Input.GetKey("space")) && !_isAirborne)
+        if ((Input.GetKey("w") || Input.GetKey("space")) && !isJumping)
         {
             rb.AddForce(Vector2.up * jumpPower);
             Debug.Log("added force");
-            _isAirborne = true;
+            isJumping = true;
             Debug.Log("airborned");
         }
     }
@@ -56,10 +59,12 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         if (direction.x > 0)
         {
             anim.SetBool("running", true);
+            sprite.flipX = false;
         }
         else if(direction.x < 0)
         {
             anim.SetBool("running", true);
+            sprite.flipX = true;
         }
         else
         {
