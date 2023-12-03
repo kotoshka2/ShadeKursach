@@ -13,7 +13,15 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     [SerializeField]private float jumpPower;
     private bool isJumping = false;
     private SpriteRenderer sprite;
-    
+    private enum MovementState
+    {
+        idle,
+        running,
+        jump,
+        falling
+    }
+
+    private MovementState _state = MovementState.idle;
     private Animator anim;
     void Start()
     {
@@ -25,17 +33,19 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     private void Update()
     {
         MovementCheck();
+        Jump();
     }
 
     void FixedUpdate()
     {
         Move();
+        
     }
 
     public void Move()
     {
         
-        Jump();
+        
         direction.x = Input.GetAxisRaw("Horizontal") * speed ;
         direction.y = rb.velocity.y;
         rb.velocity = direction;
@@ -45,31 +55,47 @@ public class PlayerMovement : MonoBehaviour, IMoveable
 
     public void Jump()
     {
-        if ((Input.GetKey("w") || Input.GetKey("space")) && !isJumping)
+        
+        if ((Input.GetKeyDown("w") || Input.GetKeyDown("space")))
         {
+            
             rb.AddForce(Vector2.up * jumpPower);
             Debug.Log("added force");
             isJumping = true;
             Debug.Log("airborned");
         }
+        
     }
 
     private void MovementCheck()
     {
         if (direction.x > 0)
         {
-            anim.SetBool("running", true);
+            _state = MovementState.running;
             sprite.flipX = false;
         }
         else if(direction.x < 0)
         {
-            anim.SetBool("running", true);
+            _state = MovementState.running;
             sprite.flipX = true;
+           
         }
         else
         {
-            anim.SetBool("running", false);
+            _state = MovementState.idle;
+            
         }
+       
+        if (rb.velocity.y > 0.1f)
+        {
+            _state = MovementState.jump;
+        }
+        if (rb.velocity.y < -0.1f)
+        {
+            _state = MovementState.falling;
+        }
+
+        anim.SetInteger("state", (int)_state);
     }
     public void CheckGround()
     {
