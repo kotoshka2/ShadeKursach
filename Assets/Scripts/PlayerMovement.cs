@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,12 +12,19 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     [SerializeField]private bool _isAirborne = false;
     [SerializeField]private float jumpPower;
     private bool isJumping = false;
+    
+    private Animator anim;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
-    
+    private void Update()
+    {
+        MovementCheck();
+    }
+
     void FixedUpdate()
     {
         Move();
@@ -26,9 +34,10 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     {
         
         Jump();
-        direction.x = Input.GetAxis("Horizontal") * speed ;
+        direction.x = Input.GetAxisRaw("Horizontal") * speed ;
         direction.y = rb.velocity.y;
         rb.velocity = direction;
+        
     }
 
     public void Jump()
@@ -42,8 +51,23 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         }
     }
 
+    private void MovementCheck()
+    {
+        if (direction.x > 0)
+        {
+            anim.SetBool("running", true);
+        }
+        else if(direction.x < 0)
+        {
+            anim.SetBool("running", true);
+        }
+        else
+        {
+            anim.SetBool("running", false);
+        }
+    }
     public void CheckGround()
     {
-        
+        throw new NotImplementedException();
     }
 }
