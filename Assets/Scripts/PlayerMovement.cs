@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,8 +12,9 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     private Vector2 direction = new Vector2(1,0);
     private BoxCollider2D coll;
     [SerializeField]private float jumpPower;
-    private bool isJumping = false;
     private SpriteRenderer sprite;
+    [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private GameObject AttackPoint;
     private enum MovementState
     {
         idle,
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        coll = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -56,11 +59,16 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     public void Jump()
     {
         
-        if ((Input.GetKeyDown("w") || Input.GetKeyDown("space")))
+        if ((Input.GetKeyDown("w") || Input.GetKeyDown("space")) && CheckGround())
         {
             
             rb.AddForce(Vector2.up * jumpPower);
+<<<<<<< HEAD
             isJumping = true;
+=======
+            
+            
+>>>>>>> a160d779aabfd987bcb557273e9b88d2ca4737dc
         }
         
     }
@@ -71,12 +79,14 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         {
             _state = MovementState.running;
             sprite.flipX = false;
+            AttackPoint.transform.localPosition = new Vector3(0.764f, 0.853f, 0f);
         }
         else if(direction.x < 0)
         {
             _state = MovementState.running;
             sprite.flipX = true;
-           
+            AttackPoint.transform.localPosition = new Vector3(-0.764f, 0.853f,0f);
+
         }
         else
         {
@@ -95,8 +105,10 @@ public class PlayerMovement : MonoBehaviour, IMoveable
 
         anim.SetInteger("state", (int)_state);
     }
-    public void CheckGround()
+    public bool CheckGround()
     {
-        throw new NotImplementedException();
+
+        return Physics2D.BoxCast(coll.bounds.center,
+            coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 }
