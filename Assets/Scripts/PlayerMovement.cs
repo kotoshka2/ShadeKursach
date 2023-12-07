@@ -63,12 +63,7 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         {
             
             rb.AddForce(Vector2.up * jumpPower);
-<<<<<<< HEAD
-            isJumping = true;
-=======
-            
-            
->>>>>>> a160d779aabfd987bcb557273e9b88d2ca4737dc
+
         }
         
     }
