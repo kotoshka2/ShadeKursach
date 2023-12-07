@@ -60,9 +60,7 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         {
             
             rb.AddForce(Vector2.up * jumpPower);
-            Debug.Log("added force");
             isJumping = true;
-            Debug.Log("airborned");
         }
         
     }
