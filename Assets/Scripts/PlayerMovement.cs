@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour, IMoveable
 {
@@ -63,7 +64,11 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         {
             
             rb.AddForce(Vector2.up * jumpPower);
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> dfaeb1ad33507a5de2c90ae1d33cc4646045d3b9
         }
         
     }
