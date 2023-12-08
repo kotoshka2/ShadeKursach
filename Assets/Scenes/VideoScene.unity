@@ -217,8 +217,13 @@ GameObject:
   m_Component:
   - component: {fileID: 631128154}
   - component: {fileID: 631128153}
+<<<<<<< HEAD
   - component: {fileID: 631128155}
   - component: {fileID: 631128156}
+=======
+  - component: {fileID: 631128156}
+  - component: {fileID: 631128155}
+>>>>>>> e58f03a907705f586192ab86b68fcc953df45617
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -286,14 +291,35 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631128152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -0.001, y: 0.0057, z: 0}
   m_LocalScale: {x: 17.944546, y: 10.036888, z: 13.747583}
+=======
+  m_LocalPosition: {x: -0.001, y: -0.0394, z: 0}
+  m_LocalScale: {x: 19.627785, y: 10.127219, z: 13.747583}
+>>>>>>> e58f03a907705f586192ab86b68fcc953df45617
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!328 &631128155
+=======
+--- !u!114 &631128155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631128152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3404d91bcd65e46a8a233fd0aa4a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!328 &631128156
+>>>>>>> e58f03a907705f586192ab86b68fcc953df45617
 VideoPlayer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -301,7 +327,11 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 631128152}
   m_Enabled: 1
+<<<<<<< HEAD
   m_VideoClip: {fileID: 32900000, guid: a7a2133866248db46a15ebdd814cfdbd, type: 3}
+=======
+  m_VideoClip: {fileID: 32900000, guid: 8abfafa32fc6766448225404f31e8839, type: 3}
+>>>>>>> e58f03a907705f586192ab86b68fcc953df45617
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -328,6 +358,7 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+<<<<<<< HEAD
 --- !u!114 &631128156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,3 +371,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3404d91bcd65e46a8a233fd0aa4a5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> e58f03a907705f586192ab86b68fcc953df45617
