@@ -64,7 +64,6 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         {
             
             rb.AddForce(Vector2.up * jumpPower);
-
         }
         
     }
