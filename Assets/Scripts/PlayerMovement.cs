@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private GameObject AttackPoint;
     private AudioSource Au;
+    [SerializeField] private float dashPower;
+    private float nextDashTime = 0f;
+    [SerializeField] private float dashCD;
     private enum MovementState
     {
         idle,
@@ -33,12 +36,14 @@ public class PlayerMovement : MonoBehaviour, IMoveable
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         coll = GetComponent<BoxCollider2D>();
+        Au = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         MovementCheck();
         Jump();
+        Dash();
     }
 
     void FixedUpdate()
@@ -51,7 +56,7 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     {
         
         
-        direction.x = Input.GetAxisRaw("Horizontal") * speed ;
+        direction.x = Input.GetAxis("Horizontal") * speed ;
         direction.y = rb.velocity.y;
         rb.velocity = direction;
         
@@ -106,5 +111,25 @@ public class PlayerMovement : MonoBehaviour, IMoveable
 
         return Physics2D.BoxCast(coll.bounds.center,
             coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    private void Dash()
+    {
+        if (Input.GetKeyDown("j") && (nextDashTime <= Time.time)) 
+        {
+            if (direction.x > 0)
+            {
+                rb.AddForce(Vector2.right * dashPower);
+                Au.Play();
+            }
+
+            if (direction.x < 0)
+            {
+                rb.AddForce(Vector2.left * dashPower);
+                Au.Play();
+            }
+
+            nextDashTime = Time.time + dashCD;
+        }
     }
 }
