@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour, IMoveable
     private SpriteRenderer sprite;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private GameObject AttackPoint;
+    private AudioSource Au;
     private enum MovementState
     {
         idle,
