@@ -38,6 +38,6 @@ public class PlayerLife : MonoBehaviour
             StartCoroutine("Die");
         }
     }
-
+    
     
 }
