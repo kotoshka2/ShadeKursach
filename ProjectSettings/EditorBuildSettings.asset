@@ -8,16 +8,25 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: afd69286a635dc8418957b7b6b596194
-  - enabled: 0
-    path: Assets/Scenes/SCENE MAZHENOV.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 590f605fed1463043828134c464ad21f
   - enabled: 1
-    path: Assets/Scenes/Nachalo.unity
-    guid: 110d38a809fdd134885b6587f75e915c
+    path: Assets/Scenes/VideoScene.unity
+    guid: d6946172104694d4dab6bbf973549e48
   - enabled: 1
     path: Assets/Scenes/Cave.unity
     guid: f8feffd1b3c1f764bab37efb6b495430
+  - enabled: 1
+    path: Assets/Scenes/cave 2.unity
+    guid: aae1a18869dea734b8e01bbc07d578a8
+  - enabled: 1
+    path: Assets/Scenes/cave 3.unity
+    guid: 7179408097236fb4ca68100624a7b873
+  - enabled: 1
+    path: Assets/Scenes/cave 2 sprava.unity
+    guid: 8ed9d56f09396724f86eec41a749f459
+  - enabled: 1
+    path: Assets/Scenes/Cave sprava.unity
+    guid: ec77052d8fc99d64b8280d18400a544f
   m_configObjects: {}
